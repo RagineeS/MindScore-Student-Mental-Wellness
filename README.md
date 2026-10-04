@@ -28,7 +28,7 @@ The demo showcases the complete workflow:
 
 ### Assessment Results
 
-![MindScore Assessment Results](MH_assessment.png)
+![MindScore Assessment Results](MH_assesment.png)
 
 ---
 
@@ -612,22 +612,6 @@ MindScore demonstrates the integration of:
 - ML model deployment
 
 The project combines an end-to-end **machine-learning prediction pipeline** with an interactive web application.
-
----
-
-# 🎥 Demo & Screenshots
-
-### Live Demo Video
-
-▶️ **[Watch the MindScore App Demo](https://drive.google.com/file/d/1F_vQdJXaZ_U0qcyXjWfkjckTVwes7Qm_/view?usp=sharing)**
-
-### Dashboard
-
-![MindScore Dashboard](MH_dashboard.png)
-
-### Assessment Results
-
-![MindScore Assessment Results](MH_assessment.png)
 
 ---
 
