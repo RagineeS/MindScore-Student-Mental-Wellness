@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MindScore — Mental Wellness Assessment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Lora:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=7" />
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <div class="noise-overlay" aria-hidden="true"></div>
+
+  <div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none">
+            <path d="M24 40V10" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M24 14C20 7 11 8 9 15C7 22 12 27 18 27" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M24 19C28 12 37 13 39 20C41 27 36 32 30 32" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M17 17C13 17 12 21 15 23M31 22C35 22 36 26 33 28M18 31C14 32 14 36 18 37M30 31C34 32 34 36 30 38" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="brand-name">MindScore</div>
+          <div class="brand-tagline">Understand. Improve. Thrive.</div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a class="nav-item active" href="#assessment">
+          <span class="nav-icon">▣</span><span>Assessment</span>
+        </a>
+        <a class="nav-item" href="#daily-preview">
+          <span class="nav-icon">◉</span><span>Live Preview</span>
+        </a>
+        <a class="nav-item" href="#insights">
+          <span class="nav-icon">⌁</span><span>Insights</span>
+        </a>
+        <a class="nav-item" href="#history">
+          <span class="nav-icon">◷</span><span>History</span>
+        </a>
+        <a class="nav-item" href="#recommendations">
+          <span class="nav-icon">✧</span><span>Recommendations</span>
+        </a>
+        <a class="nav-item" href="#resources">
+          <span class="nav-icon">▤</span><span>Resources</span>
+        </a>
+        <a class="nav-item" href="#about">
+          <span class="nav-icon">ⓘ</span><span>About</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-quote">
+        <div class="quote-icon">♡</div>
+        <p>Small steps today<br>make a better mind<br>tomorrow.</p>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+
+      <header class="topbar">
+        <p><span>MindScore</span><b>/</b> Assessment</p>
+        <div class="topbar-note"><span class="topbar-status"></span>Your private wellness space</div>
+      </header>
+
+      <!-- HERO -->
+      <section class="hero-card">
+        <div class="hero-copy">
+          <p class="hello">A gentle check-in <span>✦</span></p>
+          <h1>Let’s understand<br>your mental <em>well-being</em></h1>
+          <p class="hero-quote">“You deserve the same care you give to everyone else.”</p>
+          <p class="hero-description">
+            Take a moment to reflect on your habits and see a personal wellness score.
+          </p>
+          <div class="hero-meta">
+            <span class="meta-dot"></span>
+            Takes less than 2 minutes
+          </div>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-glow"></div>
+          <div class="head-outline">
+            <img src="img.jpg?v=1" alt="A realistic brain with colorful flowers growing above it on a soft mint background." width="305" height="229" />
+          </div>
+          <div class="hero-orb orb-a"></div>
+          <div class="hero-orb orb-b"></div>
+        </div>
+      </section>
+
+      <section class="preview-section" id="daily-preview" aria-labelledby="preview-title">
+        <div class="preview-heading">
+          <p class="section-kicker">Live preview</p>
+          <h2 id="preview-title">Your daily rhythm, at a glance</h2>
+          <p>As you fill in the form, this calm snapshot updates along the way.</p>
+        </div>
+        <div class="preview-content">
+          <div class="preview-metrics">
+            <article class="preview-metric">
+              <span class="preview-symbol" aria-hidden="true">☾</span>
+              <span class="preview-label">Sleep</span>
+              <strong><span id="preview-sleep">—</span><small>hrs</small></strong>
+              <span class="metric-track"><i id="sleep-track"></i></span>
+            </article>
+            <article class="preview-metric">
+              <span class="preview-symbol" aria-hidden="true">▯</span>
+              <span class="preview-label">Screen time</span>
+              <strong><span id="preview-screen">—</span><small>hrs</small></strong>
+              <span class="metric-track"><i id="screen-track"></i></span>
+            </article>
+            <article class="preview-metric">
+              <span class="preview-symbol" aria-hidden="true">○</span>
+              <span class="preview-label">Stress</span>
+              <strong class="preview-word" id="preview-mood">Not set</strong>
+              <span class="metric-track"><i id="stress-track"></i></span>
+            </article>
+            <article class="preview-metric">
+              <span class="preview-symbol" aria-hidden="true">⌁</span>
+              <span class="preview-label">Movement</span>
+              <strong><span id="preview-activity">—</span><small>hrs</small></strong>
+              <span class="metric-track"><i id="activity-track"></i></span>
+            </article>
+          </div>
+          <div class="completion-indicator" aria-label="Assessment completion">
+            <div class="completion-ring"><strong id="completion-value">0%</strong></div>
+            <span>complete</span>
+          </div>
+        </div>
+      </section>
+
+      <div class="dashboard-grid">
+
+        <!-- ASSESSMENT -->
+        <section class="assessment-card" id="assessment">
+          <div class="card-heading">
+            <div class="heading-icon">✦</div>
+            <div>
+              <h2>Personal &amp; Lifestyle Assessment</h2>
+              <p>Your answers stay private and secure <span>⌁</span></p>
+            </div>
+          </div>
+
+          <div class="progress-line">
+            <span class="progress-fill"></span>
+          </div>
+
+          <form id="predict-form" novalidate>
+
+            <fieldset class="group">
+              <legend><span class="legend-index">01</span><span>Profile</span><small>Basic information about you</small></legend>
+              <div class="grid grid-3">
+                <div class="field">
+                  <label for="age">Age</label>
+                  <input type="number" id="age" name="age" min="10" max="100" step="1" required placeholder="e.g. 21" />
+                  <span class="hint">10–100</span>
+                  <span class="error-msg" data-for="age"></span>
+                </div>
+                <div class="field">
+                  <label for="gender">Gender</label>
+                  <select id="gender" name="gender" required>
+                    <option value="" disabled selected hidden>Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                  </select>
+                  <span class="error-msg" data-for="gender"></span>
+                </div>
+                <div class="field">
+                  <label for="country">Country</label>
+                  <input type="text" id="country" name="country" list="country-list" required placeholder="e.g. India" autocomplete="off" />
+                  <datalist id="country-list">
+                    <option value="India"></option><option value="USA"></option><option value="Canada"></option>
+                    <option value="Australia"></option><option value="UK"></option><option value="Germany"></option>
+                    <option value="Mexico"></option><option value="Turkey"></option><option value="France"></option>
+                  </datalist>
+                  <span class="hint">Not listed? Type it anyway.</span>
+                  <span class="error-msg" data-for="country"></span>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="group">
+              <legend><span class="legend-index">02</span><span>Academic &amp; Digital Habits</span><small>Your study and screen-time behavior</small></legend>
+              <div class="grid grid-2">
+                <div class="field">
+                  <label for="academic_level">Academic level</label>
+                  <select id="academic_level" name="academic_level" required>
+                    <option value="" disabled selected hidden>Select</option>
+                    <option value="High School">High School</option>
+                    <option value="Undergraduate">Undergraduate</option>
+                    <option value="Graduate">Graduate</option>
+                  </select>
+                  <span class="error-msg" data-for="academic_level"></span>
+                </div>
+                <div class="field">
+                  <label for="most_used_platform">Most-used platform</label>
+                  <select id="most_used_platform" name="most_used_platform" required>
+                    <option value="" disabled selected hidden>Select</option>
+                    <option value="Facebook">Facebook</option><option value="Instagram">Instagram</option>
+                    <option value="Snapchat">Snapchat</option><option value="Twitter">Twitter</option>
+                    <option value="YouTube">YouTube</option><option value="TikTok">TikTok</option>
+                    <option value="LinkedIn">LinkedIn</option><option value="LINE">LINE</option>
+                    <option value="KakaoTalk">KakaoTalk</option><option value="VKontakte">VKontakte</option>
+                    <option value="WhatsApp">WhatsApp</option><option value="WeChat">WeChat</option>
+                  </select>
+                  <span class="error-msg" data-for="most_used_platform"></span>
+                </div>
+                <div class="field">
+                  <label for="purpose_of_use">Primary purpose</label>
+                  <select id="purpose_of_use" name="purpose_of_use" required>
+                    <option value="" disabled selected hidden>Select</option>
+                    <option value="Networking">Networking</option><option value="Education">Education</option>
+                    <option value="Entertainment">Entertainment</option><option value="News">News</option>
+                  </select>
+                  <span class="error-msg" data-for="purpose_of_use"></span>
+                </div>
+                <div class="field">
+                  <label for="avg_daily_usage_hours">Avg. daily screen time</label>
+                  <div class="unit-input">
+                    <input type="number" id="avg_daily_usage_hours" name="avg_daily_usage_hours" min="0" max="24" step="0.1" required placeholder="0.0" />
+                    <span class="unit">hrs</span>
+                  </div>
+                  <span class="error-msg" data-for="avg_daily_usage_hours"></span>
+                </div>
+                <div class="field field-span">
+                  <label for="daily_unlocks">Daily phone unlocks</label>
+                  <input type="number" id="daily_unlocks" name="daily_unlocks" min="0" step="1" required placeholder="e.g. 60" />
+                  <span class="error-msg" data-for="daily_unlocks"></span>
+                </div>
+              </div>
+            </fieldset>
+
+            <fieldset class="group">
+              <legend><span class="legend-index">03</span><span>Lifestyle &amp; Stress</span><small>Habits, sleep and stress levels</small></legend>
+              <div class="grid grid-3">
+                <div class="field">
+                  <label for="study_hours">Study hours / day</label>
+                  <div class="unit-input"><input type="number" id="study_hours" name="study_hours" min="0" max="24" step="0.1" required placeholder="0.0" /><span class="unit">hrs</span></div>
+                  <span class="error-msg" data-for="study_hours"></span>
+                </div>
+                <div class="field">
+                  <label for="physical_activity_hours">Physical activity / day</label>
+                  <div class="unit-input"><input type="number" id="physical_activity_hours" name="physical_activity_hours" min="0" max="24" step="0.1" required placeholder="0.0" /><span class="unit">hrs</span></div>
+                  <span class="error-msg" data-for="physical_activity_hours"></span>
+                </div>
+                <div class="field">
+                  <label for="sleep_hours_per_night">Sleep / night</label>
+                  <div class="unit-input"><input type="number" id="sleep_hours_per_night" name="sleep_hours_per_night" min="0" max="24" step="0.1" required placeholder="0.0" /><span class="unit">hrs</span></div>
+                  <span class="error-msg" data-for="sleep_hours_per_night"></span>
+                </div>
+                <div class="field field-span">
+                  <label for="stress_level">Perceived stress level</label>
+                  <div class="segmented" id="stress_level_group" data-name="stress_level">
+                    <button type="button" class="seg-btn" data-value="Low">Low</button>
+                    <button type="button" class="seg-btn" data-value="Medium">Medium</button>
+                    <button type="button" class="seg-btn" data-value="High">High</button>
+                    <button type="button" class="seg-btn" data-value="Very High">Very High</button>
+                  </div>
+                  <input type="hidden" id="stress_level" name="stress_level" required />
+                  <span class="error-msg" data-for="stress_level"></span>
+                </div>
+              </div>
+            </fieldset>
+
+            <div class="form-footer">
+              <div class="privacy-note"><span>🔒</span><span>Private by design. Your answers are used only for this prediction.</span></div>
+              <button type="submit" class="submit-btn" id="submit-btn">
+                <span class="btn-label">Generate My Score <b>→</b></span>
+                <span class="btn-spinner" aria-hidden="true"></span>
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- SCORE -->
+        <aside class="result-panel" id="live-preview" aria-live="polite">
+          <div class="result-top">
+            <div class="result-title">
+              <span class="result-heart">♥</span>
+              <div>
+                <h2>Your Mental Health Score</h2>
+                <p>Based on your answers</p>
+              </div>
+            </div>
+            <span class="live-dot">LIVE</span>
+          </div>
+
+          <div class="result-inner" id="result-inner">
+
+            <div class="state state-idle" id="state-idle">
+              <div class="score-ring idle-ring">
+                <div class="ring-inner">
+                  <span class="ring-symbol">✦</span>
+                  <span>—</span>
+                  <small>/10</small>
+                </div>
+              </div>
+              <p class="idle-label">Your score will appear here</p>
+              <p class="idle-copy">Fill in the assessment and generate your personalized score.</p>
+            </div>
+
+            <div class="state state-loading" id="state-loading" hidden>
+              <div class="pulse-ring"></div>
+              <p class="loading-label">Reading the signal…</p>
+              <p class="loading-copy">Running your habits through the model.</p>
+            </div>
+
+            <div class="state state-result" id="state-result" hidden>
+              <svg class="gauge gauge-result" viewBox="0 0 240 160" aria-hidden="true">
+                <defs>
+                  <linearGradient id="gaugeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stop-color="#18D8D0"/>
+                    <stop offset="52%" stop-color="#7CE5D5"/>
+                    <stop offset="100%" stop-color="#FF7D6E"/>
+                  </linearGradient>
+                </defs>
+                <path class="gauge-track" d="M 30 140 A 100 100 0 0 1 210 140" />
+                <path class="gauge-fill" id="gauge-fill" d="M 30 140 A 100 100 0 0 1 210 140" />
+                <g class="gauge-ticks"></g>
+                <circle class="gauge-needle-hub" cx="120" cy="140" r="5" />
+              </svg>
+              <div class="score-readout">
+                <span class="score-number" id="score-number">0.0</span>
+                <span class="score-max">/10</span>
+              </div>
+              <p class="score-band" id="score-band">—</p>
+              <p class="score-context" id="score-context"></p>
+              <section class="score-recommendations" aria-labelledby="score-recommendations-title">
+                <h3 id="score-recommendations-title">Small steps to try</h3>
+                <ul id="score-recommendation-list"></ul>
+                <p class="recommendation-disclaimer">Gentle ideas for reflection, not medical advice.</p>
+              </section>
+              <button type="button" class="reset-btn" id="reset-btn">Run another read</button>
+            </div>
+
+            <div class="state state-error" id="state-error" hidden>
+              <div class="error-icon" aria-hidden="true">!</div>
+              <p class="error-copy" id="error-copy"></p>
+              <button type="button" class="reset-btn" id="error-retry-btn">Try again</button>
+            </div>
+
+          </div>
+        </aside>
+      </div>
+
+      <section class="content-section" id="insights" aria-labelledby="insights-title">
+        <div class="section-heading">
+          <p class="section-kicker">A closer look</p>
+          <h2 id="insights-title">Your patterns</h2>
+          <p id="insight-summary">Complete an assessment to see a few helpful reflections on your daily rhythm.</p>
+        </div>
+        <div class="insight-grid">
+          <article class="insight-item"><span>Sleep</span><strong id="insight-sleep">—</strong><p>hours per night</p></article>
+          <article class="insight-item"><span>Screen time</span><strong id="insight-screen">—</strong><p>hours per day</p></article>
+          <article class="insight-item"><span>Movement</span><strong id="insight-movement">—</strong><p>hours per day</p></article>
+        </div>
+      </section>
+
+      <section class="content-section" id="history" aria-labelledby="history-title">
+        <div class="section-heading section-heading-row">
+          <div><p class="section-kicker">Your check-ins</p><h2 id="history-title">Score history</h2></div>
+          <button type="button" class="text-button" id="clear-history-btn">Clear history</button>
+        </div>
+        <p class="section-note">Your scores stay in this browser. Assessment answers are not saved.</p>
+        <div class="history-list" id="history-list" aria-live="polite"><p class="empty-state">Your completed check-ins will appear here.</p></div>
+      </section>
+
+      <section class="content-section" id="recommendations" aria-labelledby="recommendations-title">
+        <div class="section-heading">
+          <p class="section-kicker">Small, practical steps</p>
+          <h2 id="recommendations-title">Ideas for your routine</h2>
+          <p>Suggestions are generated in your browser from your latest check-in.</p>
+        </div>
+        <ul class="recommendation-list" id="recommendation-list">
+          <li>Complete an assessment to see ideas tailored to your routine.</li>
+        </ul>
+        <section class="daily-step" aria-labelledby="daily-step-title">
+          <div class="daily-step-heading">
+            <span class="daily-step-mark" aria-hidden="true">1</span>
+            <div>
+              <p class="section-kicker">One is enough</p>
+              <h3 id="daily-step-title">Choose a small step for today</h3>
+            </div>
+          </div>
+          <p class="daily-step-copy" id="daily-step-copy">A gentle intention, not another goal to keep up with.</p>
+          <div class="daily-step-controls">
+            <label class="visually-hidden" for="daily-step-select">Choose today's small step</label>
+            <select id="daily-step-select" aria-describedby="daily-step-copy"></select>
+            <button type="button" class="daily-step-save" id="save-daily-step">Save today's step</button>
+          </div>
+          <div class="daily-step-saved" id="daily-step-saved" aria-live="polite" hidden>
+            <span id="daily-step-saved-text"></span>
+            <button type="button" class="daily-step-done" id="complete-daily-step">Mark as done</button>
+          </div>
+          <p class="daily-step-feedback" id="daily-step-feedback" aria-live="polite"></p>
+        </section>
+      </section>
+
+      <section class="content-section" id="resources" aria-labelledby="resources-title">
+        <div class="section-heading">
+          <p class="section-kicker">Support, at your pace</p>
+          <h2 id="resources-title">Wellness resources</h2>
+        </div>
+        <div class="resource-list">
+          <article><h3>Pause and reset</h3><p>Try a few slow breaths, a short walk, or a quiet moment away from your screen.</p></article>
+          <article><h3>Reach out</h3><p>Talking with someone you trust can make a difficult day feel less isolating.</p></article>
+          <article><h3>Find local support</h3><p>A qualified health professional or local support service can help you explore what you are experiencing.</p></article>
+        </div>
+      </section>
+
+      <section class="content-section about-section" id="about" aria-labelledby="about-title">
+        <div class="section-heading">
+          <p class="section-kicker">About MindScore</p>
+          <h2 id="about-title">A moment to check in</h2>
+          <p>MindScore estimates a score from lifestyle information using a machine-learning model. It is for reflection and educational use only, not a diagnosis or substitute for professional care.</p>
+        </div>
+        <p class="section-note">If you feel unsafe or need urgent help, contact your local emergency service or crisis support line.</p>
+      </section>
+
+      <footer class="site-footer">
+        <p>Your well-being is more than a number.</p>
+        <span>© 2026 MindScore</span>
+      </footer>
+    </main>
+  </div>
+
+  <script src="script.js?v=3"></script>
+</body>
+</html>
